@@ -1,0 +1,48 @@
+.container
+	blockquote
+		p Time Buckets Table Demo
+		small This demo returns the 20 most recent time bucket values for each category. You can filter the records by selecting different time buckets.  Experiment with filtering time buckets from the left to the right.
+table.table.table-striped.table-bordered
+	thead
+		tr
+			th(colspan="2")
+				button.btn.btn-primary.btn-sm(ng-click="reset()")
+					span.glyphicon.glyphicon-repeat
+					span &nbsp;Reset
+			th(colspan="4") Time Buckets
+		tr
+			th Sensor
+			th Temp Reading
+			th Day
+				br
+				.form-group
+					select.form-control.input-sm(ng-change="bucketChanged(newDayBucket, 'day_bucket')" ng-model="newDayBucket")
+						option(value="") All
+						option(ng-repeat="facet in facets.day_bucket") {{facet.value}}
+			th Hour
+				br
+				.form-group
+					select.form-control.input-sm(ng-change="bucketChanged(newHourBucket, 'hour_bucket')" ng-model="newHourBucket")
+						option(value="") All
+						option(ng-repeat="facet in facets.hour_bucket") {{facet.value}}
+			th Minute
+				br
+				.form-group
+					select.form-control.input-sm(ng-change="bucketChanged(newMinuteBucket, 'minute_bucket')" ng-model="newMinuteBucket")
+						option(value="") All
+						option(ng-repeat="facet in facets.minute_bucket") {{facet.value}}
+			th Five-Second
+				br
+				.form-group
+					select.form-control.input-sm(ng-change="bucketChanged(newFiveSecondBucket, 'fivesecond_bucket')" ng-model="newFiveSecondBucket")
+						option(value="") All
+						option(ng-repeat="facet in facets.fivesecond_bucket") {{facet.value}}
+	tbody
+		tr(ng-repeat="record in records")
+			td {{record.sensor}}
+			td {{record.avgvalue}}
+			td {{record.day_bucket}}
+			td {{record.hour_bucket}}
+			td {{record.minute_bucket}}
+			td {{record.fivesecond_bucket}}
+img(src="images/gear.gif", ng-show="isLoading")

@@ -1,0 +1,27 @@
+.container
+	blockquote
+		p Time Bucket (5 Seconds Interval) BoxPlot Demo
+		small These charts are "box and whisker" charts that show the average, min and max for each temperature sensor at a particular date range. The number to the right of each interval indicates the number of sensors that have reported within that interval.  Some charts will display as a straight line.  This means that the device only registered a single recordiing during the time interval and the min, max and average are all equivalent. Select a time bucket on the left to begin.
+.row
+	.col-md-3
+		img(src="images/gear.gif", ng-show="isLeftLoading")
+		li.list-group-item.active
+			label.control-label Sort:
+			.radio
+				label
+					input(type="radio", name="sort", value="-value", ng-model="selectedSortOption", ng-change="refreshSource()")
+					| Descending
+			.radio
+				label
+					input(type="radio", name="sort", value="value", ng-model="selectedSortOption", ng-change="refreshSource()")
+					| Ascending
+			label.control-label(for="inputCount") Count:
+			select#inputCount.form-control.input-sm(ng-model="selectedCountOption", ng-options="count for count in countOptions" ng-change="refreshSource()")
+		.list-group
+			a.list-group-item(type="button", ng-repeat="bucket in buckets", ng-click="showGraph(bucket)")
+				span.badge {{bucket.count}}
+				{{bucket.value}}
+	.col-md-9
+		img(src="images/gear.gif", ng-show="isRightLoading")
+		#chartArea
+script(type='text/javascript', src='https://cdn.plot.ly/plotly-latest.min.js')
