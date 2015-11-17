@@ -1,10 +1,10 @@
 {
 	"serviceBus": {
-		"namespace": "",
-		"eventHub": "",
+		"namespace": "sidneydemo",
+		"eventHub": "sensoringest",
 		"sharedAccessKey": {
-			"name": "",
-			"secret": ""
+			"name": "Temp",
+			"secret": "KrAQqOochGCQ8+fU+v2r81VzDLJc3OYdM9IJtLPOnVk="
 		}
 	},
 	"sensors": {
@@ -14,4 +14,4 @@
 			"minValue": 35
 		}		
 	}
-}
+}          
