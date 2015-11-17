@@ -25,7 +25,10 @@ app.config(function ($routeProvider) {
       	});
 });
 
-app.constant('CONFIG_SETTINGS', CONFIG_JSON);
+app.constant('CONFIG_SETTINGS', {	
+	apiKey: CONFIG_JSON.apiKey,
+	searchUrl: 'https://' + CONFIG_JSON.searchName + '.search.windows.net/indexes/' + CONFIG_JSON.searchIndexName + '/docs/search?api-version=2015-02-28'
+});
 
 app.service('oDataBuilder', function () {
 	this.createQueryString = function(filterList) {
