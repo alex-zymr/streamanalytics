@@ -40,7 +40,7 @@ var payload = JSON.stringify({
 });
 
 // Full Event Hub publisher URI
-var eventHubUri = 'https://' + config.serviceBus.namespace + '.servicebus.windows.net/' + config.serviceBus.EventHub + '/messages';
+var eventHubUri = 'https://' + config.serviceBus.namespace + '.servicebus.windows.net/' + config.serviceBus.eventHub + '/messages';
 
 // Create a SAS token
 var sasToken = create_sas_token(eventHubUri, config.serviceBus.sharedAccessKey.name, config.serviceBus.sharedAccessKey.secret)
@@ -50,7 +50,7 @@ console.log(sasToken);
 var options = {
   hostname: config.serviceBus.namespace + '.servicebus.windows.net',
   port: 443,
-  path: '/' + config.serviceBus.EventHub + '/messages',
+  path: '/' + config.serviceBus.eventHub + '/messages',
   method: 'POST',
   headers: {
     'Authorization': sasToken,
@@ -58,6 +58,7 @@ var options = {
     'Content-Type': 'application/atom+xml;type=entry;charset=utf-8'
   }
 };
+console.log(JSON.stringify(options));
 var request = https.request(options, function(response) {
   console.log("statusCode: ", response.statusCode);
   console.log("headers: ", response.headers);
