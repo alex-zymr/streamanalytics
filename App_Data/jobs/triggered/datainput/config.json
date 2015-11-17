@@ -1,6 +1,6 @@
 {
-	"messageCount": 550,
-	"delayBetweenMessages": 500,
+	"messageCount": 2500,
+	"delayBetweenMessages": 150,
 	"serviceBus": {
 		"namespace": "sidneydemo",
 		"eventHub": "sensoringest",
