@@ -2,11 +2,11 @@
 	"messageCount": 2500,
 	"delayBetweenMessages": 150,
 	"serviceBus": {
-		"namespace": "sidneydemo",
-		"eventHub": "sensoringest",
+		"namespace": "dvsbsjzhvxdjeq22c",
+		"eventHub": "ingest",
 		"sharedAccessKey": {
-			"name": "Temp",
-			"secret": "KrAQqOochGCQ8+fU+v2r81VzDLJc3OYdM9IJtLPOnVk="
+			"name": "sample",
+			"secret": "hZl4VH7G9c5/VqsLnzTrMD7arecuYSm2luqjEWK2p0w="
 		}
 	},
 	"sensors": {
