@@ -1,5 +1,5 @@
 {
-	"messageCount": 2500,
+	"messageCount": 3500,
 	"delayBetweenMessages": 150,
 	"serviceBus": {
 		"namespace": "dvsbsjzhvxdjeq22c",
