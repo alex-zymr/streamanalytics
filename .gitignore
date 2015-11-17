@@ -31,4 +31,6 @@ node_modules
 
 # Ignore TypeScript Definitions
 typings/*/*.ts
+
+# Ignore changes to JSON config file
 App_Data/jobs/triggered/datainput/config.json
