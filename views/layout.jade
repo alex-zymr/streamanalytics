@@ -4,7 +4,8 @@ html(ng-app="analyticsApp")
     title= title
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/darkly/bootstrap.min.css')
-  body(style="padding-top: 50px; padding-bottom: 20px;")
+    link(rel='stylesheet', href='/styles/style.css')
+  body
     nav.navbar.navbar-default.navbar-fixed-top(ng-controller='NavigationController')
       .container
           .navbar-header
@@ -18,7 +19,7 @@ html(ng-app="analyticsApp")
             ul.nav.navbar-nav
               li(ng-class="{ active: isActive('/home')}")
                 a(href='#/') Home
-              li(ng-class="{ active: isActive('/search')}")
+              //li(ng-class="{ active: isActive('/search')}")
                 a(href='#/search') Search Page
               li(ng-class="{ active: isActive('/buckets')}")
                 a(href='#/buckets') Time Bucket Table

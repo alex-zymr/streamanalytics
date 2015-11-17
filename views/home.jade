@@ -4,7 +4,35 @@
 		p This collection of demo pages will show you the various ways that you can validate your data in Stream Analytics	
 .container
 	.row
-		.col-sm-6.col-md-4
+		.col-md-10.col-md-offset-1
+			h3 Stream Analytics Query
+				pre.prettyprint.linenums
+					| WITH AllRecords AS (
+					|	SELECT
+					| 		CONCAT(sensorid, &quot;_&quot;, sensor) AS sensor,
+					| 		AVG(value) AS avgvalue,
+					| 		MAX(value) AS maxvalue,
+					| 		MIN(value) AS minvalue,
+					| 		COUNT(value) AS valuecount,
+					| 		CONCAT(CONCAT(sensorid, &quot;_&quot;, sensor), &quot;_&quot;, CAST(System.Timestamp AS nvarchar(max))) AS rowkey,
+					| 		System.TimeStamp AS eventutctime,
+					| 		CONCAT(DATENAME(yy, System.TimeStamp), &quot;-&quot;, DATENAME(dy, System.TimeStamp)) AS day_bucket,
+					| 		CONCAT(DATENAME(yy, System.TimeStamp), &quot;-&quot;, DATENAME(dy, System.TimeStamp), &quot;-&quot;, DATENAME(hh, System.TimeStamp)) AS hour_bucket,
+					| 		CONCAT(DATENAME(yy, System.TimeStamp), &quot;-&quot;, DATENAME(dy, System.TimeStamp), &quot;-&quot;, DATENAME(hh, System.TimeStamp), &quot;-&quot;, DATENAME(mi, System.TimeStamp)) AS minute_bucket,
+					| 		CONCAT(DATENAME(yy, System.TimeStamp), &quot;-&quot;, DATENAME(dy, System.TimeStamp), &quot;-&quot;, DATENAME(hh, System.TimeStamp), &quot;-&quot;, DATENAME(mi, System.TimeStamp), &quot;-&quot;, DATENAME(ss, System.TimeStamp)) AS fivesecond_bucket,
+					| 		0 AS partitionkey
+					| 	FROM
+					| 		ehinput
+					| 	TIMESTAMP BY
+					| 		EventEnqueuedUtcTime
+					| 	GROUP BY
+					| 		TumblingWindow(ss, 5),
+					| 		CONCAT(sensorid, &quot;_&quot;, sensor)
+					| )
+					| SELECT * INTO docdboutput FROM AllRecords
+					| SELECT * INTO tablestoroutput FROM AllRecords
+		.row
+		//.col-sm-6.col-md-4
 			h2 Search Range   
 			p This demo shows a page that filters results and shows facets based on an average temperature range.
 			p
@@ -18,4 +46,6 @@
 			h2 5 Second BoxPlot     
 			p This demo shows a boxplot for each entry within a 5-second period.
 			p
-				a.btn.btn-default(href='#/chart', role='button') View demo &raquo;       
+				a.btn.btn-default(href='#/chart', role='button') View demo &raquo;		 
+script(type='text/javascript', src='http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.js')
+link(rel='stylesheet', href='/styles/prettify.css')
