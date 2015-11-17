@@ -1,0 +1,17 @@
+{
+	"serviceBus": {
+		"namespace": "",
+		"eventHub": "",
+		"sharedAccessKey": {
+			"name": "",
+			"secret": ""
+		}
+	},
+	"sensors": {
+		"allowedChars": "abcde",
+		"temperature": {
+			"maxValue": 95,
+			"minValue": 35
+		}		
+	}
+}
