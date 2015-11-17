@@ -1,5 +1,5 @@
 var CONFIG_JSON = {
-	searchName: 'sidneydemo',
-	searchIndexName: 'sensor',
-	apiKey: '8E4E21E17E0E2345558CD5A9B6FC1585'	
+	searchName: 'dvsjzhvxdjeq22c',
+	searchIndexName: 'sample',
+	apiKey: 'E84F7E03A98C1D3E3E9613DA9A139829'	
 };
