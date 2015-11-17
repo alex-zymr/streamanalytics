@@ -8,3 +8,8 @@ body
 { 
 	list-style-type: decimal !important;
 }
+
+.progress-bar-danger-opaque
+{
+	background: rgba(240,65,36,0.25);
+}

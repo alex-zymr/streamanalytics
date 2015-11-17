@@ -4,7 +4,9 @@ html(ng-app="analyticsApp")
     title= title
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/darkly/bootstrap.min.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/yeti/bootstrap.min.css')
+    link(rel='stylesheet', href='/styles/prettify.css')
+    link(rel='stylesheet', href='/styles/angular.rangeSlider.css')
     link(rel='stylesheet', href='/styles/style.css')
   body
     nav.navbar.navbar-default.navbar-fixed-top(ng-controller='NavigationController')
@@ -20,7 +22,7 @@ html(ng-app="analyticsApp")
             ul.nav.navbar-nav
               li(ng-class="{ active: isActive('/home')}")
                 a(href='#/') Home
-              //li(ng-class="{ active: isActive('/search')}")
+              li(ng-class="{ active: isActive('/search')}")
                 a(href='#/search') Search Page
               li(ng-class="{ active: isActive('/buckets')}")
                 a(href='#/buckets') Time Bucket Table
@@ -29,9 +31,14 @@ html(ng-app="analyticsApp")
     block content    
     script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
     script(type='text/javascript', src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
-    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js')
-    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js')
+    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js')
+    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular-route.min.js')
+    script(type='text/javascript', src='http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.js')
+    script(type='text/javascript', src='https://cdn.plot.ly/plotly-latest.min.js')
+    script(type='text/javascript', src='/scripts/angular.rangeSlider.js')
+    script(type='text/javascript', src='/angular/angular-config.js')
     script(type='text/javascript', src='/angular/angular-app.js')
     script(type='text/javascript', src='/angular/navController.js')
     script(type='text/javascript', src='/angular/chartController.js')
     script(type='text/javascript', src='/angular/bucketsController.js')
+    script(type='text/javascript', src='/angular/searchController.js')

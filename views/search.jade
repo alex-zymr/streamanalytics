@@ -1,4 +1,65 @@
 .container
 	blockquote
 		p Search Demo
-		small 
+		small This form will allow you to view the most recent 50 records based on a temperature range. You can adjust the range and click the "Filter" button to update the results.
+	.well.well-lg
+		.alert.alert-info
+			p Maximum Temperature: 
+				b {{temperature.boundRange.max}}
+			p Minimum Temperature: 
+				b {{temperature.boundRange.min}}
+		.form-horizontal
+			.form-group
+				label.control-label(for="temperatureRange") Temperature Range:
+				div#temperatureRange(range-slider, min="temperature.boundRange.min", max="temperature.boundRange.max", model-min="temperature.selectedRange.min", model-max="temperature.selectedRange.max", attach-handle-values="true")
+			.form-group
+				button.btn.btn-default(type="button", ng-click="resetData()") Reset
+				&nbsp;
+				button.btn.btn-primary(type="button", ng-click="filterData()") Filter
+.well.well-lg
+	.alert.alert-dismissable.alert-warning(ng-show="recordCount > recordMax")
+		h4 Some Records are Hidden
+		p This search only returns the most recent {{recordMax}} records within the range.
+	.list-group
+		.list-group-item.active
+			h4 {{recordCount}} Results Total
+			h5(ng-show="recordCount > recordMax") {{recordMax}} Results Returned
+		.list-group-item(ng-repeat="record in records")
+			h3.list-group-item-heading {{record.sensor}}&nbsp;
+				span.text-success [{{record.eventutctime | date:'MMM d, y h:mm a'}}]
+			.list-group-item-text
+				.panel.panel-info
+					.panel-heading
+						.panel-title
+							.row
+								.col-sm-4
+									span Min Temperature:&nbsp;
+										b {{record.minvalue}}
+								.col-sm-4
+									span Avg Temperature:&nbsp;
+										b {{record.avgvalue}}
+								.col-sm-4
+									span Max Temperature:&nbsp;
+										b {{record.maxvalue}}
+					.panel-body
+						.progress(ng-init="mainProgress = (((record.maxvalue - record.minvalue) / (temperature.boundRange.max - temperature.boundRange.min)) * 100)")
+							.progress-bar.progress-bar-danger-opaque(ng-style="{ width: (((record.minvalue - temperature.boundRange.min) / (temperature.boundRange.max - temperature.boundRange.min)) * 100) + '%'}")
+							.progress-bar.progress-bar-success(ng-style="{ width: mainProgress == 0 ? '0.1%' : mainProgress + '%'}")
+							.progress-bar.progress-bar-danger-opaque(ng-style="{ width: ((((temperature.boundRange.max - record.maxvalue) / (temperature.boundRange.max - temperature.boundRange.min)) * 100) - (mainProgress == 0 ? 0.1 : 0)) + '%'}")
+						p Most Precise Bucket:
+							b {{record.fivesecond_bucket}}
+						ul.breadcrumb
+							li
+								span.label.label-primary Day
+								span &nbsp;{{record.day_bucket}}
+							li
+								span.label.label-primary Hour
+								span &nbsp;{{record.hour_bucket | split:'-':2}}
+							li
+								span.label.label-primary Minute
+								span &nbsp;{{record.minute_bucket | split:'-':3}}
+							li
+								span.label.label-primary Five Second
+								span &nbsp;{{record.fivesecond_bucket | split:'-':4}}
+							
+							

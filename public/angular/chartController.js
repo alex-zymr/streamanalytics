@@ -55,8 +55,7 @@ app.controller('ChartController', function($scope, $http, CONFIG_SETTINGS)
 				paper_bgcolor:"rgba(255, 255, 255, 0)",
 				plot_bgcolor:"rgba(0, 0, 0, 0)",
 				font:{
-					family: "Lato,Helvetica Neue, Helvetica, Arial, sans-serif",
-					color: "rgb(255, 255, 255)"
+					family: "Lato,Helvetica Neue, Helvetica, Arial, sans-serif"
 				}
 			});			
 			$scope.isRightLoading = false;	
