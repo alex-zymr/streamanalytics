@@ -2,11 +2,11 @@
 	"messageCount": 3500,
 	"delayBetweenMessages": 150,
 	"serviceBus": {
-		"namespace": "dvsbsjzhvxdjeq22c",
-		"eventHub": "ingest",
+		"namespace": "sisbutbc53vivhywg",
+		"eventHub": "telemetryhub",
 		"sharedAccessKey": {
-			"name": "sample",
-			"secret": "hZl4VH7G9c5/VqsLnzTrMD7arecuYSm2luqjEWK2p0w="
+			"name": "AllAccessPolicy",
+			"secret": "ou8F+hklzk7F+JliJnFqTdCy+qNbjafhNE/AsGodUjU="
 		}
 	},
 	"sensors": {
