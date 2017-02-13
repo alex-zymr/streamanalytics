@@ -2,11 +2,11 @@
 	"messageCount": 3500,
 	"delayBetweenMessages": 150,
 	"serviceBus": {
-		"namespace": "iotservicebusnamespace121",
-		"eventHub": "ioteventhub122",
+		"namespace": "favendoservicebus",
+		"eventHub": "favendo_job_hub",
 		"sharedAccessKey": {
-			"name": "ioteventhubpolicy",
-			"secret": "GbKoPcsN1s+PF7FFtJOA5GVnQpTKs6+0znlqPxXWyfw="
+			"name": "favendo_job_hub_policy",
+			"secret": "zO7yDjxZSTH/ITM+Ruy4hYqsd19Uq6R2RpqZCaTwx3M="
 		}
 	},
 	"sensors": {
